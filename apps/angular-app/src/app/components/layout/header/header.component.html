@@ -1,0 +1,9 @@
+<header class="header">
+  <nav>
+    <ul>
+      <li *ngFor="let link of linksArr">
+        <a [routerLink]="link.route" routerLinkActive="active">{{ link.label }}</a>
+      </li>
+    </ul>
+  </nav>
+</header>

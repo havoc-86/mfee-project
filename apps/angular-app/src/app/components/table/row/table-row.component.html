@@ -1,0 +1,4 @@
+<tr>
+    <th *ngIf="isHeader" scope="{{scope}}" >{{ content || "--" }}</th>
+    <td *ngIf="!isHeader">{{ content || "--" }}</td>
+</tr>

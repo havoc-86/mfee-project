@@ -1,6 +1,6 @@
 @import '~normalize.css';
-@import './app/shared/variables';
+@import './app/shared/variables.scss';
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $font-family-base;
 }

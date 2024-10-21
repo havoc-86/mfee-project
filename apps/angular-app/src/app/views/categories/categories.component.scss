@@ -1,0 +1,186 @@
+@import '../../shared/variables.scss';
+
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: $spacing-large;
+  gap: $spacing-medium;
+
+  header {
+    color: $color-text;
+    border-radius: $border-radius;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .hero {
+      width: 100%;
+      margin-bottom: $spacing-large;
+      text-align: center;
+      h1 {
+        font-size: $font-size-title;
+        text-wrap: pretty;
+      }
+      h2 {
+        font-size: $font-size-subtitle;
+        color: $color-secondary;
+        text-wrap: balance;
+      }
+    }
+    .actions {
+      display: flex;
+      justify-content: end;
+      width: 100%;
+
+      button {
+        background-color: $color-secondary;
+        color: $color-background;
+        border: none;
+        border-radius: $border-radius;
+        padding: $spacing-medium $spacing-large;
+        font-size: $font-size-base;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: darken($color-secondary, 10%);
+      }
+    }
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 800px;
+      flex-wrap: wrap;
+      margin-top: $spacing-large;
+      padding: $spacing-medium;
+      border-radius: $border-radius;
+      ul {
+        button {
+          border: $border-width solid $border-color;
+          border-radius: 0;
+          &:first-child {
+            border-top-left-radius: $border-radius;
+            border-bottom-left-radius: $border-radius;
+          }
+          &:last-child {
+            border-top-right-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+          }
+          font-size: $font-size-base;
+          font-weight: semi-bold;
+          padding: $spacing-small $spacing-large;
+          background-color: $color-background;
+          text-transform: uppercase;
+          .active {
+            background-color: $color-text;
+            color: $color-background;
+            transition: background-color 0.3s;
+            cursor: pointer;
+          }
+        }
+        button:hover {
+          background-color: $color-text;
+          color: $color-background;
+          transition: background-color 0.3s;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .cards-container {
+    padding: $spacing-large;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: $spacing-large;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      article {
+        background-color: $color-background;
+        border-radius: $border-radius;
+        box-shadow: $shadow-1;
+        padding: $spacing-large;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 200px;
+        font-family: $font-family-base;
+
+        h3 {
+          font-size: $font-size-subtitle;
+          color: $color-text;
+          margin-bottom: $spacing-medium;
+        }
+
+        h4 {
+          font-size: $font-size-base;
+          color: $color-secondary;
+          margin-bottom: $spacing-small;
+        }
+
+        p {
+          font-size: $font-size-small;
+          color: $color-text;
+          word-break: break-all;
+          margin-bottom: $spacing-medium;
+        }
+      }
+    }
+
+    div:last-child {
+      display: flex;
+      justify-content: flex-end;
+      gap: $spacing-medium;
+    }
+
+    button {
+      background-color: $color-primary;
+      color: white;
+      border: none;
+      padding: $spacing-small $spacing-medium;
+      border-radius: $border-radius;
+      cursor: pointer;
+      font-size: $font-size-small;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($color-primary, 10%);
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px lighten($color-primary, 20%);
+      }
+
+      &:nth-child(2) {
+        background-color: $color-accent;
+      }
+
+      &:nth-child(2):hover {
+        background-color: darken($color-accent, 10%);
+      }
+    }
+  }
+}
+footer {
+  background-color: $color-primary;
+  color: $color-text;
+  padding: $spacing-large;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

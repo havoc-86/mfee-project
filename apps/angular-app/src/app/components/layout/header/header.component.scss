@@ -1,0 +1,38 @@
+@import '../../../shared/variables.scss';
+
+
+.header {
+    background-color: $color-primary;
+    color: $color-text;
+    padding: $spacing-large;
+    text-align: center;
+  
+    nav {
+      ul {
+        display: flex;
+        justify-content: start;
+        gap: $spacing-large;
+        padding-left: 0;
+  
+        li {
+          list-style-type: none;
+        }
+  
+        a {
+          color: $color-text;
+          font-size: $font-size-large;
+          text-decoration: none;
+        }
+  
+        a:hover {
+          text-decoration: underline;
+          color: #000;
+        }
+  
+        .active {
+          color: $color-background;
+          text-decoration: underline;
+        }
+      }
+    }
+  }

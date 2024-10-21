@@ -1,0 +1,30 @@
+// Color Variables
+$color-primary: #3498db;
+$color-secondary: #2ecc71;
+$color-accent: #e74c3c;
+$color-background: #ecf0f1;
+$color-text: #2c3e50;
+
+// Font Variables
+$font-family-base: 'Open Sans', sans-serif;
+$font-size-small: 12px;
+$font-size-base: 16px;
+$font-size-large: 20px;
+$font-size-subtitle: 24px;
+$font-size-title: 32px;
+
+
+// Spacing Variables
+$spacing-unit: 8px;
+$spacing-small: calc( $spacing-unit / 2);
+$spacing-medium: $spacing-unit;
+$spacing-large: calc($spacing-unit * 2);
+
+// Border Variables
+$border-radius: 4px;
+$border-width: 1px;
+$border-rounded: 100%;
+$border-color: #bdc3c7;
+
+// Shadow Variables
+$shadow-1: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
