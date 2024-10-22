@@ -1,9 +1,14 @@
 <header class="header">
-  <nav>
-    <ul>
-      <li *ngFor="let link of linksArr">
-        <a [routerLink]="link.route" routerLinkActive="active">{{ link.label }}</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="container">
+    <div class="logo">
+      <img src="assets/logo.svg" alt="Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li *ngFor="let link of linksArr">
+          <a [routerLink]="link.route" routerLinkActive="active">{{ link.label }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>

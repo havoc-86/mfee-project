@@ -76,7 +76,6 @@ main {
           font-weight: semi-bold;
           padding: $spacing-small $spacing-large;
           background-color: $color-background;
-          text-transform: uppercase;
           .active {
             background-color: $color-text;
             color: $color-background;
@@ -100,13 +99,17 @@ main {
       list-style: none;
       margin: 0;
       padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
       gap: $spacing-large;
     }
 
     li {
+      flex: 1 1 280px;
+      max-width: 360px;
       margin: 0;
+      margin-bottom: $spacing-large;
       padding: 0;
       article {
         background-color: $color-background;
@@ -138,7 +141,14 @@ main {
           margin-bottom: $spacing-medium;
         }
       }
+      article:hover {
+        box-shadow: $shadow-3;
+        transform: scale(1.02);
+        transition: transform 0.2s ease-in-out;
+        
+      }
     }
+    
 
     div:last-child {
       display: flex;

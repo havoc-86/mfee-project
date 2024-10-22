@@ -1,1 +1,17 @@
-<button (click)="btnGotClicked">+</button>
+<ng-container [ngSwitch]="buttonType">
+  <button *ngSwitchCase="'edit'" [type]="buttonType" [disabled]="isDisabled" (click)="onClick()" class="btn-action">
+    <img src="assets/icons/edit.svg" alt="Edit" class="icon" />
+  </button>
+  <button *ngSwitchCase="'remove'" [type]="buttonType" [disabled]="isDisabled" (click)="onClick()" class="btn-action">
+    <img src="assets/icons/remove.svg" alt="Delete" class="icon" />
+  </button>
+  <button *ngSwitchCase="'add'" [type]="buttonType" [disabled]="isDisabled" (click)="onClick()" class="btn-action">
+    <img src="assets/icons/add.svg" alt="Add" class="icon" />
+  </button>
+  <button *ngSwitchCase="'positive'" [type]="buttonType" [disabled]="isDisabled" (click)="onClick()" class="btn-positive">
+    <span>{{ label | titlecase }}</span>
+  </button>
+  <button *ngSwitchCase="'negative'" [type]="buttonType" [disabled]="isDisabled" (click)="onClick()" class="btn-negative">
+    <span>{{ label | titlecase }}</span>
+  </button>
+</ng-container>

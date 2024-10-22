@@ -4,3 +4,37 @@
 body {
   font-family: $font-family-base;
 }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: $spacing-large;
+  gap: $spacing-medium;
+  nav {
+    margin-left: calc(2 * $spacing-large);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.btn-pagination {
+  height: calc(2 * $spacing-large);
+  width: calc(2 * $spacing-large);
+  padding: calc($spacing-small / 2);
+}
+.btn-icon__svg {
+  width: 24px;
+  height: 24px;
+}

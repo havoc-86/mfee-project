@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,6 +9,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './action-button.component.scss'
 })
 export class ActionButtonComponent {
-  //emit event that button was clicked
-btnGotClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Input() buttonType: 'edit' | 'remove' | 'add' | 'positive' | 'negative' = 'add';
+  @Input() label: string = '';
+  @Input() isDisabled: boolean = false;
+
+  @Output() buttonClick = new EventEmitter<void>();
+
+  onClick(): void {
+    if (!this.isDisabled) {
+      this.buttonClick.emit();
+    }
+  }
 }

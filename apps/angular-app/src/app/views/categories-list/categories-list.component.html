@@ -1,1 +1,46 @@
-<h1>IT WORKS</h1>
+<mfee-project-header />
+<main>
+  <table class="table">
+    <thead class="table-header">
+      <tr class="table-header__row">
+        <th *ngFor="let header of ['no.', 'title', 'description', 'actions']" class="table-header__cell">{{ header | titlecase }}</th>
+      </tr>
+    </thead>
+    <tbody class="table-body">
+      <tr *ngFor="let category of paginatedCategories; index as i" class="table-body__row">
+        <td class="table-body__row-header">{{ i }}</td>
+        <td class="table-body__row-cell">{{ category.title | titlecase }}</td>
+        <td class="table-body__row-cell">{{ category.description }}</td>
+        <td class="table-body__row-cell">
+          <div class="actions">
+            <mfee-project-action-button [buttonType]="'edit'" (buttonClick)="editPost()"></mfee-project-action-button>
+            <mfee-project-action-button [buttonType]="'remove'" (buttonClick)="deletePost()"></mfee-project-action-button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <caption>
+    <div class="caption-info">
+      <p>Showing page {{ currentPage }} of {{ totalPages }}</p>
+    </div>
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1" class="btn-pagination">
+        <img src="assets/icons/chevron-back.svg" class="icon__svg" />
+      </button>
+
+      <button
+        *ngFor="let page of [].constructor(totalPages); let pageNumber = index"
+        (click)="goToPage(pageNumber + 1)"
+        [class.active]="currentPage === pageNumber + 1"
+        class="btn-pagination"
+      >
+        {{ pageNumber + 1 }}
+      </button>
+
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn-pagination">
+        <img src="assets/icons/chevron-next.svg" class="icon__svg" />
+      </button>
+    </div>
+  </caption>
+</main>

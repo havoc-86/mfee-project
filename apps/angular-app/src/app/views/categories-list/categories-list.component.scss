@@ -1,0 +1,112 @@
+@import '../../shared/variables.scss';
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: $spacing-large;
+  gap: $spacing-medium;
+  .table {
+    width: 100%;
+    margin-block: auto;
+    .table-header {
+      .table-header__row {
+        .table-header__cell {
+          background-color: $color-background-black;
+          color: $color-accent;
+          padding: $spacing-medium $spacing-large;
+          text-align: left;
+          border-bottom: $border-width solid $border-color;
+        }
+      }
+    }
+    .table-body {
+      .table-body__row {
+        width: 100%;
+        height: calc(3 * $spacing-large);
+        &:hover {
+          box-shadow: $shadow-1;
+          background-color: darken($color-background, 5%);
+          transition: all 0.3s ease-in-out;
+        }
+        .table-body__row-header {
+          padding: $spacing-small $spacing-medium;
+          border-bottom: $border-width solid $border-color;
+        }
+        .table-body__row-cell {
+          padding: $spacing-small $spacing-medium;
+          border-bottom: $border-width solid $border-color;
+
+          .actions {
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+          }
+        }
+      }
+    }
+    /* Forcing column widths */
+    .table-header__cell:nth-child(1),
+    .table-body__row-header {
+      width: 10%;
+    }
+
+    .table-header__cell:nth-child(2),
+    .table-body__row-cell:nth-child(2) {
+      width: 25%;
+    }
+
+    .table-header__cell:nth-child(3),
+    .table-body__row-cell:nth-child(3) {
+      width: 45%;
+    }
+
+    .table-header__cell:nth-child(4),
+    .table-body__row-cell:nth-child(4) {
+      width: 20%;
+    }
+  }
+
+  caption {
+    margin-top: $spacing-medium;
+    font-size: $font-size-base;
+    font-weight: bold;
+    margin-bottom: $spacing-medium;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .caption-info {
+      width: 30%;
+      color: $color-background-black;
+    }
+    .pagination {
+      display: flex;
+      width: 100%;
+      justify-content: end;
+      align-items: center;
+      gap: 5px;
+      .btn-pagination {
+        padding: $spacing-small $spacing-medium;
+        color: $color-background-black;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+
+        .icon__svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+      .active {
+        background-color: $color-background-black;
+        color: $color-background;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../../shared/variables.scss';
+
+.btn-action {
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  box-shadow: $shadow-1;
+  background-color: $color-accent;
+  padding: $spacing-medium $spacing-medium;
+  &:hover {
+    background-color: darken($color-accent, 10%);
+    box-shadow: $shadow-2;
+    scale: 1.02;
+    transition: all 0.3s ease-in-out;
+  }
+}
+.btn-positive {
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  box-shadow: $shadow-1;
+  display: flex;
+  align-items: center;
+  background-color: $color-accent;
+  padding: $spacing-small $spacing-medium;
+}
+.btn-negative {
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  box-shadow: $shadow-1;
+  display: flex;
+  align-items: center;
+  background-color: $color-accent;
+  padding: $spacing-small $spacing-medium;
+}
+.icon {
+  margin: auto;
+  height: 24px;
+  width: 24px;
+}
