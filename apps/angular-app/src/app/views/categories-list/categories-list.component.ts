@@ -1,53 +1,65 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../../components/layout/header/header.component';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '../../models/location.model';
+import { DataService } from '../../services/data/data.service';
 import { ActionButtonComponent } from '../../components/buttons/action/action-button.component';
+import { NgFor, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'mfee-project-categories-list',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, ActionButtonComponent],
+  imports: [TitleCasePipe, NgFor, ActionButtonComponent],
   templateUrl: './categories-list.component.html',
   styleUrl: './categories-list.component.scss'
 })
-export class CategoriesListComponent {
-  categories = [
-    { title: 'test1', description: 'Oh Fortuna, Velut Luna' },
-    { title: 'test2', description: 'Description 2' },
-    { title: 'test3', description: 'Description 3' },
-    { title: 'test4', description: 'Description 4' },
-    { title: 'test5', description: 'Description 5' },
-    { title: 'test6', description: 'Description 6' },
-    { title: 'test7', description: 'Description 7' },
-    { title: 'test8', description: 'Description 8' },
-    { title: 'test4', description: 'Description 4' },
-    { title: 'test5', description: 'Description 5' },
-    { title: 'test6', description: 'Description 6' },
-    { title: 'test7', description: 'Description 7' },
-    { title: 'test8', description: 'Description 8' }
-  ];
-  editPost() {
-    throw new Error('Method not implemented.');
+export class CategoriesListComponent implements OnInit {
+  locations: Location[] = [];
+  isEditPopupOpen = false;
+  isDeletePopupOpen = false;
+  selectedLocation: Location | null = null;
+  currentPage = 1;
+  rowsPerPage = 5;
+  totalLocations = this.locations.length;
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    this.dataService.getLocations().subscribe((locations) => {
+      this.locations = locations;
+    });
   }
-  deletePost() {
+
+  getLocations(): void {
+    this.dataService.getLocations().subscribe((data: Location[]) => {
+      this.locations = data;
+    });
+  }
+
+  editLocation(location: Location) {
+    this.dataService.updateLocation(location).subscribe((updatedLocation: Location) => {
+      const index = this.locations.findIndex((loc) => loc.id === updatedLocation.id);
+
+      if (index !== -1) {
+        this.locations[index] = updatedLocation;
+      }
+    });
+  }
+
+  deleteLocation() {
     throw new Error('Method not implemented.');
   }
 
   // Pagination properties
-  currentPage = 1;
-  rowsPerPage = 5;
-  totalCategories = this.categories.length;
 
   // Calculate the total number of pages
   get totalPages() {
-    return Math.ceil(this.totalCategories / this.rowsPerPage);
+    return Math.ceil(this.totalLocations / this.rowsPerPage);
   }
 
   // Get the categories for the current page
-  get paginatedCategories() {
+  get paginatedLocations() {
     const startIndex = (this.currentPage - 1) * this.rowsPerPage;
     const endIndex = startIndex + this.rowsPerPage;
-    return this.categories.slice(startIndex, endIndex);
+    return this.locations.slice(startIndex, endIndex);
   }
 
   // Go to the next page
@@ -69,5 +81,9 @@ export class CategoriesListComponent {
     if (pageNumber >= 1 && pageNumber <= this.totalPages) {
       this.currentPage = pageNumber;
     }
+  }
+
+  openEditPopup(_t14: Location) {
+    throw new Error(`Method not implemented. ${_t14}`);
   }
 }

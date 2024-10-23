@@ -1,38 +1,40 @@
-<mfee-project-header />
 <main>
   <header>
     <div class="hero">
-      <h1>TITULO</h1>
-      <h2>Subtitulo</h2>
+      <h1>{{ pageTitle | titlecase }}</h1>
+      <h2>{{ pageSubtitle | titlecase }}</h2>
     </div>
     <div class="actions">
-      
+      <mfee-project-action-button [buttonType]="'add'"></mfee-project-action-button>
     </div>
     <div class="filters">
       <ul>
-        <button *ngFor="let item of ['All', 'Lorem', 'Travel', 'Ek Balam', 'Food', 'Test', 'Otro', ]">{{item | uppercase}}</button>
+        <button *ngFor="let category of categories" [class.active]="activeFilters.includes(category)" class="btn-filter">
+          {{ category | uppercase }}
+        </button>
       </ul>
     </div>
   </header>
   <section class="cards-container">
     <ul>
-      <li *ngFor="let i of [1,2,3,4,5, 6]">
-        <article>
+      <li *ngFor="let location of locations">
+        <article [mfeeProjectCheckImageUrl]="location.url">
           <div>
-            <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h3>
-            <h4>Category</h4>
-            <p>Odio aut beatae illo harum excepturi!</p>
-            <p>https://averylongurl.com/to/the/image/path.jpg</p>
+            <h3>{{ location.title }}</h3>
+            <h4>{{ location.category }}</h4>
+            <p>{{ location.description }}</p>
+            <p>{{ location.url.slice(0, 200) }}</p>
           </div>
           <div>
-            <button>Edit</button>
-            <button>Delete</button>
+            <mfee-project-action-button [buttonType]="'edit'" (buttonClick)="editLocation(location)"></mfee-project-action-button>
+            <mfee-project-action-button [buttonType]="'remove'" (buttonClick)="deleteLocation(location)"></mfee-project-action-button>
           </div>
         </article>
       </li>
     </ul>
   </section>
 </main>
-<footer>
-  <p>Footer</p>
-</footer>
+<mfee-project-popup [showPopup]="isEditPopupOpen" title="Test Popup" (closePopup)="closeEditPopup()">
+  {{ selectedLocation | json }}
+</mfee-project-popup>
+<mfee-project-popup [showPopup]="isDeletePopupOpen" title="Test Popup" (closePopup)="closeRemovePopup()"></mfee-project-popup>

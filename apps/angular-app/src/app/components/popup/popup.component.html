@@ -1,0 +1,11 @@
+<div *ngIf="showPopup" class="popup-backdrop">
+  <div class="popup">
+    <div class="popup-header">
+      {{ title }}
+      <span class="popup-close" (click)="close()">✖</span>
+    </div>
+    <div class="popup-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

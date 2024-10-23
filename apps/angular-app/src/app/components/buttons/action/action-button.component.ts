@@ -1,10 +1,10 @@
+import { NgSwitch, NgSwitchCase, TitleCasePipe } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'mfee-project-action-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgSwitch, NgSwitchCase, TitleCasePipe],
   templateUrl: './action-button.component.html',
   styleUrl: './action-button.component.scss'
 })

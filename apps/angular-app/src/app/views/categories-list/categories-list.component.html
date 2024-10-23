@@ -1,4 +1,3 @@
-<mfee-project-header />
 <main>
   <table class="table">
     <thead class="table-header">
@@ -7,14 +6,14 @@
       </tr>
     </thead>
     <tbody class="table-body">
-      <tr *ngFor="let category of paginatedCategories; index as i" class="table-body__row">
-        <td class="table-body__row-header">{{ i }}</td>
-        <td class="table-body__row-cell">{{ category.title | titlecase }}</td>
-        <td class="table-body__row-cell">{{ category.description }}</td>
+      <tr *ngFor="let location of paginatedLocations; index as i" class="table-body__row">
+        <td class="table-body__row-header">{{ (currentPage - 1) * rowsPerPage + i + 1 }}</td>
+        <td class="table-body__row-cell">{{ location.title | titlecase }}</td>
+        <td class="table-body__row-cell">{{ location.description }}</td>
         <td class="table-body__row-cell">
           <div class="actions">
-            <mfee-project-action-button [buttonType]="'edit'" (buttonClick)="editPost()"></mfee-project-action-button>
-            <mfee-project-action-button [buttonType]="'remove'" (buttonClick)="deletePost()"></mfee-project-action-button>
+            <mfee-project-action-button [buttonType]="'edit'" (buttonClick)="openEditPopup(location)"></mfee-project-action-button>
+            <mfee-project-action-button [buttonType]="'remove'" (buttonClick)="openEditPopup(location)"></mfee-project-action-button>
           </div>
         </td>
       </tr>
@@ -26,7 +25,7 @@
     </div>
     <div class="pagination">
       <button (click)="prevPage()" [disabled]="currentPage === 1" class="btn-pagination">
-        <img src="assets/icons/chevron-back.svg" class="icon__svg" />
+        <img src="assets/icons/chevron-back.svg" class="btn-icon__svg" />
       </button>
 
       <button
@@ -39,7 +38,7 @@
       </button>
 
       <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn-pagination">
-        <img src="assets/icons/chevron-next.svg" class="icon__svg" />
+        <img src="assets/icons/chevron-next.svg" class="btn-icon__svg" />
       </button>
     </div>
   </caption>

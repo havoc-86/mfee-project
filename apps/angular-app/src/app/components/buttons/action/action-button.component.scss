@@ -8,7 +8,7 @@
   background-color: $color-accent;
   padding: $spacing-medium $spacing-medium;
   &:hover {
-    background-color: darken($color-accent, 10%);
+    background-color: lighten($color-accent, 10%);
     box-shadow: $shadow-2;
     scale: 1.02;
     transition: all 0.3s ease-in-out;
