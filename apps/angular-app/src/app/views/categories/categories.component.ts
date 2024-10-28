@@ -41,16 +41,18 @@ export class CategoriesComponent implements OnInit {
 
   closeRemovePopup() {
     this.isDeletePopupOpen = false;
+    this.selectedLocation = null;
   }
   closeEditPopup() {
     this.isEditPopupOpen = false;
+    this.selectedLocation = null;
   }
   editLocation(location: Location) {
     this.isEditPopupOpen = true;
-    console.log('Edit location', location);
+    this.selectedLocation = location;
   }
   deleteLocation(location: Location) {
     this.isDeletePopupOpen = true;
-    console.log('Delete location', location);
+    this.selectedLocation = location;
   }
 }

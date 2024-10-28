@@ -18,21 +18,39 @@
   border: none;
   border-radius: $border-radius;
   cursor: pointer;
+  font-weight: 600;
   box-shadow: $shadow-1;
   display: flex;
   align-items: center;
   background-color: $color-accent;
   padding: $spacing-small $spacing-medium;
+  &:hover {
+    background-color: darken($color-accent, 10%);
+    color: $color-text;
+    border: $border-width solid $color-accent;
+    box-shadow: $shadow-2;
+    scale: 1.02;
+    transition: all 0.3s ease-in-out;
+  }
 }
 .btn-negative {
   border: none;
   border-radius: $border-radius;
   cursor: pointer;
+  font-weight: 600;
   box-shadow: $shadow-1;
   display: flex;
   align-items: center;
-  background-color: $color-accent;
+  background-color: $color-background;
   padding: $spacing-small $spacing-medium;
+  &:hover {
+    background-color: lighten($color-background, 10%);
+    color: $color-text-dark;
+    border: $border-width solid $color-accent;
+    box-shadow: $shadow-2;
+    scale: 1.02;
+    transition: all 0.3s ease-in-out;
+  }
 }
 .icon {
   margin: auto;

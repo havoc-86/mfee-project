@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  backdrop-filter: blur($spacing-medium);
 }
 
 .popup {
@@ -21,12 +22,14 @@
   width: 500px;
   max-width: 80%;
   position: relative;
-}
-
-.popup-header {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  .popup-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .popup-body {
+    margin-bottom: 1rem;
+  }
 }
 
 .popup-close {
@@ -34,4 +37,8 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+strong {
+  font-size: $font-size-base;
+  color: $color-accent;
 }

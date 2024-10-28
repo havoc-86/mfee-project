@@ -19,22 +19,52 @@
     <ul>
       <li *ngFor="let location of locations">
         <article [mfeeProjectCheckImageUrl]="location.url">
-          <div>
-            <h3>{{ location.title }}</h3>
-            <h4>{{ location.category }}</h4>
-            <p>{{ location.description }}</p>
-            <p>{{ location.url.slice(0, 200) }}</p>
-          </div>
-          <div>
-            <mfee-project-action-button [buttonType]="'edit'" (buttonClick)="editLocation(location)"></mfee-project-action-button>
-            <mfee-project-action-button [buttonType]="'remove'" (buttonClick)="deleteLocation(location)"></mfee-project-action-button>
+          <div class="image-gradient-overlay"></div>
+          <div class="card-content">
+            <header>
+              <h3>{{ location.title }}</h3>
+              <h4>{{ location.category }}</h4>
+            </header>
+            <main>
+              <p>{{ location.description }}</p>
+              <p>{{ location.url.slice(0, 200) }}</p>
+            </main>
+            <footer>
+              <mfee-project-action-button [buttonType]="'edit'" (buttonClick)="editLocation(location)"></mfee-project-action-button>
+              <mfee-project-action-button [buttonType]="'remove'" (buttonClick)="deleteLocation(location)"></mfee-project-action-button>
+            </footer>
           </div>
         </article>
       </li>
     </ul>
   </section>
 </main>
-<mfee-project-popup [showPopup]="isEditPopupOpen" title="Test Popup" (closePopup)="closeEditPopup()">
-  {{ selectedLocation | json }}
+<mfee-project-popup [showPopup]="isEditPopupOpen" title="Edit location" (closePopup)="closeEditPopup()">
+  <h4>WARNING! Carefully update your location to avoid any mistake.</h4>
+  <p>¿Are you sure you want to <strong>UPDATE</strong> {{ selectedLocation?.title }}?</p>
+  <div class="popup-actions">
+    <mfee-project-action-button [buttonType]="'negative'" [label]="'Cancel'" (buttonClick)="closeEditPopup()"></mfee-project-action-button>
+
+    <mfee-project-action-button
+      [buttonType]="'positive'"
+      [label]="'DELETE'"
+      (buttonClick)="deleteLocation(selectedLocation)"
+    ></mfee-project-action-button>
+  </div>
 </mfee-project-popup>
-<mfee-project-popup [showPopup]="isDeletePopupOpen" title="Test Popup" (closePopup)="closeRemovePopup()"></mfee-project-popup>
+<mfee-project-popup [showPopup]="isDeletePopupOpen" title="Delete location" (closePopup)="closeRemovePopup()">
+  <h4>WARNING! Deleting a location is an irreversible action!!!</h4>
+  <p>¿Are you sure you want to <strong>DELETE</strong> {{ selectedLocation?.title }}?</p>
+  <div class="popup-actions">
+    <mfee-project-action-button
+      [buttonType]="'negative'"
+      [label]="'Cancel'"
+      (buttonClick)="closeRemovePopup()"
+    ></mfee-project-action-button>
+
+    <mfee-project-action-button
+      [buttonType]="'positive'"
+      [label]="'DELETE'"
+      (buttonClick)="deleteLocation(selectedLocation)"
+    ></mfee-project-action-button></div
+></mfee-project-popup>

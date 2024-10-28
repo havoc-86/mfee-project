@@ -8,8 +8,9 @@ import { Location } from '../../models/location.model';
   providedIn: 'root'
 })
 export class DataService {
-  private locationApiUrl = 'http://localhost:3001/locations';
-  private usersApiUrl = 'http://localhost:3002/users';
+  private BASE_API_URL = 'http://localhost:3001';
+  private locationApiUrl = `${this.BASE_API_URL}/locations`;
+  private usersApiUrl = `${this.BASE_API_URL}/users`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

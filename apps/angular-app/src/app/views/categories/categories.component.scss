@@ -1,6 +1,5 @@
 @import '../../shared/variables.scss';
 
-
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -20,11 +19,11 @@ main {
 
     .hero {
       width: 100%;
-      margin-bottom: $spacing-large;
       text-align: center;
       h1 {
         font-size: $font-size-title;
         text-wrap: pretty;
+        color: $color-primary;
       }
       h2 {
         font-size: $font-size-subtitle;
@@ -34,7 +33,7 @@ main {
     }
     .actions {
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       width: 100%;
 
       button {
@@ -55,15 +54,21 @@ main {
       display: flex;
       justify-content: center;
       gap: 0;
-      max-width: 800px;
+      max-width: 1200px;
       flex-wrap: wrap;
       margin-top: $spacing-large;
       padding: $spacing-medium;
       border-radius: $border-radius;
+      font-weight: 500;
       ul {
-        button {
-          border: $border-width solid $border-color;
+        .btn-filter {
+          border: $border-width solid $color-accent;
+          background-color: $color-background-black;
           border-radius: 0;
+          font-size: $font-size-base;
+          font-weight: semi-bold;
+          padding: $spacing-small $spacing-large;
+          color: $color-text;
           &:first-child {
             border-top-left-radius: $border-radius;
             border-bottom-left-radius: $border-radius;
@@ -72,10 +77,6 @@ main {
             border-top-right-radius: $border-radius;
             border-bottom-right-radius: $border-radius;
           }
-          font-size: $font-size-base;
-          font-weight: semi-bold;
-          padding: $spacing-small $spacing-large;
-          background-color: $color-background;
           .active {
             background-color: $color-text;
             color: $color-background;
@@ -84,7 +85,7 @@ main {
           }
         }
         button:hover {
-          background-color: $color-text;
+          background-color: $color-text-dark;
           color: $color-background;
           transition: background-color 0.3s;
           cursor: pointer;
@@ -93,104 +94,110 @@ main {
     }
   }
   .cards-container {
-    padding: $spacing-large;
-
+    display: flex;
+    width: 100%;
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-evenly;
+      width: 100%;
       gap: $spacing-large;
-    }
-
-    li {
-      flex: 1 1 280px;
-      max-width: 360px;
-      margin: 0;
-      margin-bottom: $spacing-large;
-      padding: 0;
-      article {
-        background-color: $color-background;
+      li {
+        flex: 1 1 300px;
+        min-width: 300px;
+        max-width: 450px;
+        min-height: 300px;
+        margin: 0;
+        margin-bottom: $spacing-large;
+        padding: 0;
         border-radius: $border-radius;
-        box-shadow: $shadow-1;
-        padding: $spacing-large;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 200px;
-        font-family: $font-family-base;
 
-        h3 {
-          font-size: $font-size-subtitle;
-          color: $color-text;
-          margin-bottom: $spacing-medium;
+        article {
+          border-radius: $border-radius;
+          box-shadow: $shadow-1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 400px;
+          font-family: $font-family-base;
+          position: relative;
+
+          .image-gradient-overlay {
+            background-image: linear-gradient(
+              to bottom,
+              rgba($color-background-black, 0) 40%,
+              rgba($color-background-black, 0.6) 60%,
+              rgba($color-background-black, 0.8) 100%
+            );
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 10;
+          }
+          .card-content {
+            position: absolute;
+            //position this to start at half the height
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            z-index: 20;
+            padding: $spacing-medium;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            color: $color-background;
+
+            header {
+              display: flex;
+              flex-direction: column;
+              h3 {
+                font-size: $font-size-subtitle;
+                color: $color-text;
+                filter: drop-shadow(0 0 2px $color-background-black);
+              }
+
+              h4 {
+                font-size: $font-size-base;
+                color: $color-text;
+                filter: drop-shadow(0 0 2px $color-background-black);
+              }
+            }
+            main {
+              p {
+                font-size: $font-size-small;
+                color: $color-text;
+                word-break: break-all;
+                margin-bottom: $spacing-medium;
+                filter: drop-shadow(0 0 2px $color-background-black);
+              }
+            }
+            footer {
+              display: flex;
+              justify-content: end;
+              gap: $spacing-medium;
+              margin-right: ($spacing-large * 2);
+              margin-bottom: $spacing-large;
+            }
+          }
         }
 
-        h4 {
-          font-size: $font-size-base;
-          color: $color-secondary;
-          margin-bottom: $spacing-small;
+        article:hover {
+          box-shadow: $shadow-3;
+          transform: scale(1.02);
+          transition: transform 0.2s ease-in-out;
         }
-
-        p {
-          font-size: $font-size-small;
-          color: $color-text;
-          word-break: break-all;
-          margin-bottom: $spacing-medium;
-        }
-      }
-      article:hover {
-        box-shadow: $shadow-3;
-        transform: scale(1.02);
-        transition: transform 0.2s ease-in-out;
-        
       }
     }
-    
 
     div:last-child {
       display: flex;
       justify-content: flex-end;
       gap: $spacing-medium;
     }
-
-    button {
-      background-color: $color-primary;
-      color: white;
-      border: none;
-      padding: $spacing-small $spacing-medium;
-      border-radius: $border-radius;
-      cursor: pointer;
-      font-size: $font-size-small;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: darken($color-primary, 10%);
-      }
-
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px lighten($color-primary, 20%);
-      }
-
-      &:nth-child(2) {
-        background-color: $color-accent;
-      }
-
-      &:nth-child(2):hover {
-        background-color: darken($color-accent, 10%);
-      }
-    }
   }
-}
-footer {
-  background-color: $color-primary;
-  color: $color-text;
-  padding: $spacing-large;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
